@@ -1,0 +1,9 @@
+numpy
+matplotlib
+scipy
+cvss
+pandas
+networkx
+graphviz
+requests
+nvd_api

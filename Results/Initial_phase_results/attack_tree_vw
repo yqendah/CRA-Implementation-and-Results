@@ -1,0 +1,31 @@
+digraph {
+	0 [label="Perform DoS Attack and Spoof Volume Setting"]
+	"0_gate" [label=AND shape=record]
+	0 -> "0_gate"
+	"0_gate" -> 1
+	1 [label="Gain Access to Vehicle's Network"]
+	"1_gate" [label=OR shape=ellipse]
+	1 -> "1_gate"
+	"1_gate" -> 1.1
+	1.1 [label="Physical Access to Vehicle Network"]
+	"1_gate" -> 1.2
+	1.2 [label="Exploit Remote Access"]
+	"0_gate" -> 2
+	2 [label="Compromise ICAS 3 IVI ECU"]
+	"2_gate" [label=AND shape=record]
+	2 -> "2_gate"
+	"2_gate" -> 2.1
+	2.1 [label="Send Malicious API Calls"]
+	"2.1_gate" [label=OR shape=ellipse]
+	2.1 -> "2.1_gate"
+	"2.1_gate" -> "2.1.1"
+	"2.1.1" [label="Denial of Service (DoS)"]
+	"2.1_gate" -> "2.1.2"
+	"2.1.2" [label="Spoof Volume Commands"]
+	"2_gate" -> 2.2
+	2.2 [label="Bypass Access Control"]
+	"2.2_gate" [label=OR shape=ellipse]
+	2.2 -> "2.2_gate"
+	"2.2_gate" -> "2.2.1"
+	"2.2.1" [label="Exploit CWE-284 Vulnerability"]
+}

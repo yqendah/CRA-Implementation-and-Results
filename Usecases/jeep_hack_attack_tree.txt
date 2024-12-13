@@ -1,0 +1,573 @@
+ID: 0
+Node type: Root
+Name: Remote Control
+Description: Gain Remote Control of Jeep Cherokee.
+Gate: AND
+Parent: None
+
+ID: 1
+Node type: Intermediate
+Name: Entry Points
+Description: Exploit Remote Entry Points and Compromise Head Unit.
+Gate: OR
+Parent: 0
+
+ID: 1.1
+Node type: Intermediate
+Name: Cellular Network
+Description: Compromise Cellular Network.
+Gate: AND
+Parent: 1
+
+ID: 1.1.1
+Node type: Leaf
+Name: Identify Vulnerabilities
+Description: Identify Common Vulnerabilities in Cellular Network.
+Parent: 1.1
+AV: Network
+AC: Low
+PR: High
+UI: None
+
+ID: 1.1.2
+Node type: Leaf
+Name: Exploit Vulnerabilities
+Description: Exploit Vulnerabilities (e.g., Telnet, HTTPs).
+Parent: 1.1
+AV: Network
+AC: High
+PR: High
+UI: Required
+
+ID: 1.1.3
+Node type: Leaf
+Name: Access Shell
+Description: Gain Access to Shell.
+Parent: 1.1
+AV: Network
+AC: High
+PR: High
+UI: Required
+
+ID: 1.1.4
+Node type: Intermediate
+Name: Obtain IP Address
+Description: Obtain IP Address of the Vehicle.
+Gate: OR
+Parent: 1.1
+
+ID: 1.1.4.1
+Node type: Leaf
+Name: Random Selection
+Description: Random Selection or Worm.
+Parent: 1.1.4
+AV: Local
+AC: Low
+PR: High
+UI: Required
+
+ID: 1.1.4.2
+Node type: Leaf
+Name: Use VIN or GPS
+Description: Use VIN or GPS to Scan IP Ranges.
+Parent: 1.1.4
+AV: Network
+AC: Low
+PR: High
+UI: Required
+
+ID: 1.2
+Node type: Intermediate
+Name: Wi-Fi Network
+Description: Compromise Wi-Fi Network.
+Gate: AND
+Parent: 1
+
+ID: 1.2.1
+Node type: Leaf
+Name: Identify Wi-Fi
+Description: Identify Wi-Fi Network.
+Parent: 1.2
+AV: Network
+AC: Low
+PR: High
+UI: Required
+
+ID: 1.2.2
+Node type: Intermediate
+Name: Gain Wi-Fi Access
+Description: Gain Access to Wi-Fi Network.
+Gate: OR
+Parent: 1.2
+
+ID: 1.2.2.1
+Node type: Leaf
+Name: Crack Password
+Description: Crack Wi-Fi Password.
+Parent: 1.2.2
+AV: Local
+AC: High
+PR: High
+UI: None
+
+ID: 1.2.2.2
+Node type: Leaf
+Name: Reverse Password
+Description: Reverse Engineer Wi-Fi Password.
+Parent: 1.2.2
+AV: Local
+AC: High
+PR: High
+UI: None
+
+ID: 1.2.3
+Node type: Leaf
+Name: Intercept Traffic
+Description: Intercept and Manipulate Traffic.
+Parent: 1.2
+AV: Network
+AC: Low
+PR: High
+UI: None
+
+ID: 1.2.4
+Node type: Intermediate
+Name: Extract Data
+Description: Extract Data.
+Gate: OR
+Parent: 1.2
+
+ID: 1.2.4.1
+Node type: Leaf
+Name: Identify IP
+Description: Identify IP Address.
+Parent: 1.2.4
+AV: Network
+AC: Low
+PR: High
+UI: Required
+
+ID: 1.2.4.2
+Node type: Leaf
+Name: Identify Protocols
+Description: Identify Communication Protocols.
+Parent: 1.2.4
+AV: Network
+AC: Low
+PR: High
+UI: Required
+
+ID: 1.2.4.3
+Node type: Leaf
+Name: Identify Ports
+Description: Identify Vulnerable Ports.
+Parent: 1.2.4
+AV: Network
+AC: Low
+PR: High
+UI: Required
+
+ID: 1.3
+Node type: Intermediate
+Name: Bluetooth Network
+Description: Compromise Bluetooth Network.
+Gate: AND
+Parent: 1
+
+ID: 1.3.1
+Node type: Leaf
+Name: Identify Bluetooth
+Description: Identify Bluetooth Device.
+Parent: 1.3
+AV: Network
+AC: Low
+PR: High
+UI: None
+
+ID: 1.3.2
+Node type: Leaf
+Name: Exploit Bluetooth
+Description: Exploit Bluetooth Vulnerability.
+Parent: 1.3
+AV: Network
+AC: Low
+PR: High
+UI: Required
+
+ID: 1.3.3
+Node type: Leaf
+Name: Intercept Bluetooth
+Description: Intercept and Manipulate Traffic.
+Parent: 1.3
+AV: Network
+AC: Low
+PR: High
+UI: Required
+
+ID: 1.3.4
+Node type: Intermediate
+Name: Extract Bluetooth Data
+Description: Extract Data.
+Gate: AND
+Parent: 1.3
+
+ID: 1.3.4.1
+Node type: Leaf
+Name: Identify Bluetooth Protocols
+Description: Identify Communication Protocols.
+Parent: 1.3.4
+AV: Network
+AC: Low
+PR: High
+UI: Required
+
+ID: 1.3.4.2
+Node type: Leaf
+Name: Identify Bluetooth Ports
+Description: Identify Vulnerable Ports.
+Parent: 1.3.4
+AV: Network
+AC: Low
+PR: High
+UI: Required
+
+ID: 2
+Node type: Intermediate
+Name: Remote Access
+Description: Gain Remote Access to the Head Unit.
+Gate: AND
+Parent: 0
+
+ID: 2.1
+Node type: Leaf
+Name: Exploit D-Bus
+Description: Exploit D-Bus Service (Exploit Lack of Authentication for Anonymous Actions).
+Parent: 2
+AV: Network
+AC: High
+PR: High
+UI: Required
+
+ID: 2.2
+Node type: Leaf
+Name: Access UConnect
+Description: Access the UConnect System (Head Unit).
+Parent: 2
+AV: Network
+AC: High
+PR: High
+UI: Required
+
+ID: 3
+Node type: Intermediate
+Name: Control ECUs
+Description: Control ECUs to Manipulate Non-CAN and CAN Attributes.
+Gate: OR
+Parent: 0
+
+ID: 3.1
+Node type: Intermediate
+Name: Non-CAN ECUs
+Description: Control ECUs to Manipulate Non-CAN Physical Attributes.
+Gate: AND
+Parent: 3
+
+ID: 3.1.1
+Node type: Intermediate
+Name: Exploit OMAP
+Description: Exploit the OMAP Chip of the Head Unit.
+Gate: AND
+Parent: 3.1
+
+ID: 3.1.1.1
+Node type: Leaf
+Name: Execute Code
+Description: Run Code Using the Execute Method of D-Bus Service.
+Parent: 3.1.1
+AV: Network
+AC: High
+PR: High
+UI: Required
+
+ID: 3.1.1.2
+Node type: Leaf
+Name: Upload SSH Key
+Description: Upload SSH Public Key and Configure File.
+Parent: 3.1.1
+AV: Network
+AC: High
+PR: High
+UI: None
+
+ID: 3.1.1.3
+Node type: Leaf
+Name: Start SSH
+Description: Start SSH Service.
+Parent: 3.1.1
+AV: Network
+AC: High
+PR: High
+UI: Required
+
+ID: 3.1.1.4
+Node type: Leaf
+Name: SSH to Vehicle
+Description: SSH to the Vehicle and Run Commands from the Remote Terminal.
+Parent: 3.1.1
+AV: Network
+AC: High
+PR: High
+UI: None
+
+ID: 3.1.1.5
+Node type: Intermediate
+Name: Control UConnect
+Description: Control the UConnect System (Non-CAN Related Attacks).
+Gate: AND
+Parent: 3.1.1
+
+ID: 3.1.1.5.1
+Node type: Leaf
+Name: Control Radio
+Description: Control Radio, HVAC, with LUA Scripts.
+Parent: 3.1.1.5
+AV: Network
+AC: High
+PR: High
+UI: None
+
+ID: 3.1.1.5.2
+Node type: Leaf
+Name: Control AC
+Description: Control Air Conditioner
+Parent: 3.1.1.5
+AV: Network
+AC: High
+PR: High
+UI: None
+
+ID: 3.1.1.5.3
+Node type: Leaf
+Name: Control Windshield Wipers
+Description: Control windshield Wipers.
+Parent: 3.1.1.5
+AV: Network
+AC: High
+PR: High
+UI: None
+
+ID: 3.2
+Node type: Intermediate
+Name: CAN ECUs
+Description: Control ECUs to Manipulate CAN Physical Attributes.
+Gate: AND
+Parent: 3
+
+ID: 3.2.1
+Node type: Intermediate
+Name: Flash V850
+Description: Flash the V850 with Modified Firmware.
+Gate: AND
+Parent: 3.2
+
+ID: 3.2.1.1
+Node type: Intermediate
+Name: Understand V850
+Description: Understand V850.
+Gate: OR
+Parent: 3.2.1
+
+ID: 3.2.1.1.1
+Node type: Leaf
+Name: Application Node
+Description: Application Node.
+Parent: 3.2.1.1
+AV: Local
+AC: High
+PR: High
+UI: Required
+
+ID: 3.2.1.1.2
+Node type: Leaf
+Name: Bootloader Node
+Description: Bootloader Node.
+Parent: 3.2.1.1
+AV: Local
+AC: High
+PR: High
+UI: Required
+
+ID: 3.2.1.1.3
+Node type: Leaf
+Name: Bootloader Updater
+Description: Bootloader Updater Node.
+Parent: 3.2.1.1
+AV: Local
+AC: High
+PR: High
+UI: Required
+
+ID: 3.2.2
+Node type: Intermediate
+Name: Update Firmware
+Description: Update V850 Firmware.
+Gate: AND
+Parent: 3.2
+
+ID: 3.2.2.1
+Node type: Leaf
+Name: Obtain Firmware
+Description: Obtain V850 Firmware Binary File.
+Parent: 3.2.2
+AV: Local
+AC: High
+PR: High
+UI: Required
+
+ID: 3.2.2.2
+Node type: Intermediate
+Name: Reverse Engineer V850
+Description: Reverse Engineer V850 Firmware.
+Gate: AND
+Parent: 3.2.2
+
+ID: 3.2.2.2.1
+Node type: Leaf
+Name: Firmware Extraction
+Description: Firmware Extraction.
+Parent: 3.2.2.2
+AV: Local
+AC: High
+PR: High
+UI: Required
+
+ID: 3.2.2.2.2
+Node type: Intermediate
+Name: Disassembly & Decompilation
+Description: Disassembly and Decompilation.
+Gate: AND
+Parent: 3.2.2.2
+
+ID: 3.2.2.2.2.1
+Node type: Leaf
+Name: Disassemble Firmware
+Description: Disassemble Firmware Using IDA Pro.
+Parent: 3.2.2.2.2
+AV: Local
+AC: High
+PR: High
+UI: Required
+
+ID: 3.2.2.2.2.2
+Node type: Leaf
+Name: Decompile Code
+Description: Decompile Code to a Higher-Level Language Using Ghidra or IDA Pro.
+Parent: 3.2.2.2.2
+AV: Local
+AC: High
+PR: High
+UI: Required
+
+ID: 3.2.2.2.3
+Node type: Leaf
+Name: Dynamic Analysis
+Description: Dynamic Analysis.
+Parent: 4.2.2
+AV: Local
+AC: High
+PR: High
+UI: Required
+
+ID: 3.2.2.2.3.1
+Node type: Leaf
+Name: Set Breakpoints
+Description: Set Breakpoints and Analyze Firmware Behavior Using IDA Python.
+Parent: 3.2.2.2.3
+AV: Local
+AC: High
+PR: High
+UI: Required
+
+ID: 3.2.2.3
+Node type: Leaf
+Name: Find CAN Code
+Description: Find Code for Sending and Receiving CAN Messages.
+Parent: 3.2.2
+AV: Local
+AC: High
+PR: High
+UI: Required
+
+ID: 3.2.2.4
+Node type: Leaf
+Name: Modify Firmware
+Description: Modify the Firmware to Send Manipulated CAN Data.
+Parent: 3.2.2
+AV: Local
+AC: High
+PR: High
+UI: Required
+
+ID: 3.2.3
+Node type: Leaf
+Name: Flash V850 via OMAP
+Description: Flash V850 with Modified Firmware Using OMAP Chip from UConnect System.
+Parent: 3.2
+AV: Local
+AC: High
+PR: High
+UI: Required
+
+ID: 3.2.4
+Node type: Intermediate
+Name: Cyber-Physical Actions
+Description: Perform Cyber-Physical Actions.
+Gate: AND
+Parent: 3.2
+
+ID: 3.2.4.1
+Node type: Leaf
+Name: Utilize Firmware
+Description: Utilize Modified Firmware to Send CAN Messages.
+Parent: 3.2.4
+AV: Local
+AC: High
+PR: High
+UI: None
+
+ID: 3.2.4.2
+Node type: Intermediate
+Name: Send CAN Messages
+Description: Send CAN Messages from OMAP to V850 Chip Using SPI to Perform Physical Actions.
+Gate: OR
+Parent: 3.2.4
+
+ID: 3.2.4.2.1
+Node type: Leaf
+Name: Steering
+Description: Steering.
+Parent: 3.2.4.2
+AV: Local
+AC: High
+PR: High
+UI: Required
+
+ID: 3.2.4.2.2
+Node type: Leaf
+Name: Brakes
+Description: Brakes.
+Parent: 3.2.4.2
+AV: Local
+AC: High
+PR: High
+UI: Required
+
+ID: 3.2.4.2.3
+Node type: Leaf
+Name: Accelerations
+Description: Accelerations.
+Parent: 3.2.4.2
+AV: Local
+AC: High
+PR: High
+UI: Required

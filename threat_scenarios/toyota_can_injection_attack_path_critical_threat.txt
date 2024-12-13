@@ -1,0 +1,31 @@
+0,CAN Injection attack to gain physical access to Toyota RAV4 car.
+1,Gain physical access to the vehicle.
+1.1,Bypass physical security (e.g., break into the vehicle).
+1.2,Access the Headlight Connector Behind the Bumper.
+1.3,Manipulate the wiring without triggering an alarm.
+2,Deploy CAN Injector.
+2.1,Connect the CAN Injector to the vehicle's CAN bus.
+2.1.2,Connect to the OBD-II port to access the control CAN bus.
+2.2,Use the CAN injector to send CAN frames onto the control CAN bus
+2.2.1,Send CAN messages onto the bus
+2.2.2,Synchronize timing to match valid CAN traffic
+2.2.3,Bypass detection mechanisms, if present, to avoid triggering anomalies
+2.3,Identify Critical ECUs on the CAN-Bus
+2.3.1,Identify smart key ECU
+2.4,Impersonate the target ECU
+2.4.1,Impersonate the smart key
+2.4.1.1,Reverse-engineer key validation protocol
+2.4.1.2,Send Validation Messages
+2.4.1.3,Avoid triggering error responses from ECUs when sending validation messages
+3,Exploit CAN communication to propagate messages to other CAN-buses
+3.1,Send forged CAN messages across the control CAN bus
+3.1.1,Send key validation messages over the control CAN bus
+3.2,Exploit the lack of internal communication security to propagate messages
+3.2.1,Utilize forwarding mechanisms to copy CAN frames from the control CAN bus to the powertrain CAN bus
+3.2.2,Avoid detection by ECUs monitoring communication on the buses
+3.2.3,Exploit any vulnerabilities in the ECU firmware to ensure messages are accepted
+4,Compromise the ECUs on different CAN buses
+4.1,Compromise the engine ECU on the powertrain CAN bus
+4.1.1,Send crafted CAN messages to deactivate the immobilizer
+4.1.2,Exploit vulnerabilities in the ECU to disable immobilizer security features
+4.2.3,Bypass security controls in the powertrain CAN to prevent interference

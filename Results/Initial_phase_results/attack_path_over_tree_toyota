@@ -1,0 +1,127 @@
+digraph {
+	0 [label="Compromise CAN-Bus."]
+	"0_gate" [label=AND shape=rect]
+	0 -> "0_gate" [color=black]
+	1 [label="Physical Access" color=red fillcolor=lightcoral style=filled]
+	"1_gate" [label=AND color=red fillcolor=lightcoral shape=rect style=filled]
+	1 -> "1_gate" [color=red]
+	1.1 [label="Bypass Physical Security"]
+	"1_gate" -> 1.1
+	1.2 [label="Access Headlight" color=red fillcolor=lightcoral style=filled]
+	"1_gate" -> 1.2 [color=red penwidth=2]
+	1.3 [label="Manipulate the Wiring" color=red fillcolor=lightcoral style=filled]
+	"1_gate" -> 1.3 [color=red penwidth=2]
+	"0_gate" -> 1 [color=red penwidth=2]
+	2 [label="Deploy CAN Injector"]
+	"2_gate" [label=AND shape=rect]
+	2 -> "2_gate" [color=black]
+	2.1 [label="Connect the CAN Injector."]
+	"2.1_gate" [label=OR shape=ellipse]
+	2.1 -> "2.1_gate" [color=black]
+	"2.1.1" [label="Headlight Wiring"]
+	"2.1_gate" -> "2.1.1"
+	"2.1.2" [label="OBD-II Port"]
+	"2.1_gate" -> "2.1.2"
+	"2.1.3" [label="Other Vulnerable External Wiring"]
+	"2.1_gate" -> "2.1.3"
+	"2_gate" -> 2.1
+	2.2 [label="send CAN Frames to Control CAN-Bus."]
+	"2.2_gate" [label=AND shape=rect]
+	2.2 -> "2.2_gate" [color=black]
+	"2.2.1" [label="Send CAN Messages"]
+	"2.2_gate" -> "2.2.1"
+	"2.2.2" [label="Match CAN Traffic"]
+	"2.2_gate" -> "2.2.2"
+	"2.2.3" [label="Avoid Triggering Anomalies"]
+	"2.2_gate" -> "2.2.3"
+	"2_gate" -> 2.2
+	2.3 [label="Identify Critical ECUs on the CAN-Bus."]
+	"2.3_gate" [label=OR shape=ellipse]
+	2.3 -> "2.3_gate" [color=black]
+	"2.3.1" [label="Smart Key ECU"]
+	"2.3_gate" -> "2.3.1"
+	"2.3.2" [label="Door Control ECU"]
+	"2.3_gate" -> "2.3.2"
+	"2.3.3" [label="Telematics ECU"]
+	"2.3_gate" -> "2.3.3"
+	"2_gate" -> 2.3
+	2.4 [label="Impersonate the Target ECU."]
+	"2.4_gate" [label=OR shape=ellipse]
+	2.4 -> "2.4_gate" [color=black]
+	"2.4.1" [label="Impersonate the Smart key"]
+	"2.4.1_gate" [label=AND shape=rect]
+	"2.4.1" -> "2.4.1_gate" [color=black]
+	"2.4.1.1" [label="Reverse-engineering"]
+	"2.4.1_gate" -> "2.4.1.1"
+	"2.4.1.2" [label="Send Validation Messages"]
+	"2.4.1_gate" -> "2.4.1.2"
+	"2.4.1.3" [label="Avoid Triggering Alarms"]
+	"2.4.1_gate" -> "2.4.1.3"
+	"2.4_gate" -> "2.4.1"
+	"2.4.2" [label="Impersonate the Parking brake"]
+	"2.4_gate" -> "2.4.2"
+	"2_gate" -> 2.4
+	"0_gate" -> 2
+	3 [label="Propagate to Other CAN-Buses"]
+	"3_gate" [label=AND shape=rect]
+	3 -> "3_gate" [color=black]
+	3.1 [label="Send Forged CAN Messages"]
+	"3.1_gate" [label=OR shape=ellipse]
+	3.1 -> "3.1_gate" [color=black]
+	"3.1.1" [label="Send Key Validation"]
+	"3.1_gate" -> "3.1.1"
+	"3.1.2" [label="Forge Control Messages"]
+	"3.1_gate" -> "3.1.2"
+	"3_gate" -> 3.1
+	3.2 [label="Exploit Lack of Security"]
+	"3.2_gate" [label=AND shape=rect]
+	3.2 -> "3.2_gate" [color=black]
+	"3.2.1" [label="Copy CAN Messages from Control to Powertrain CAN-Bus"]
+	"3.2_gate" -> "3.2.1"
+	"3.2.2" [label="Avoid Detection"]
+	"3.2_gate" -> "3.2.2"
+	"3.2.3" [label="Exploit vulnerabilities"]
+	"3.2_gate" -> "3.2.3"
+	"3_gate" -> 3.2
+	"0_gate" -> 3
+	4 [label="Compromise Different CAN-Buses"]
+	"4_gate" [label=OR shape=ellipse]
+	4 -> "4_gate" [color=black]
+	4.1 [label="Compromise Engine ECU"]
+	"4.1_gate" [label=AND shape=rect]
+	4.1 -> "4.1_gate" [color=black]
+	"4.1.1" [label="Send Crafted CAN Messages"]
+	"4.1_gate" -> "4.1.1"
+	"4.1.2" [label="Disable the Immobilizer"]
+	"4.1_gate" -> "4.1.2"
+	"4.1.3" [label="Bypass Security Controls"]
+	"4.1_gate" -> "4.1.3"
+	"4_gate" -> 4.1
+	4.2 [label="Compromise Door ECU."]
+	"4.2_gate" [label=AND shape=rect]
+	4.2 -> "4.2_gate" [color=black]
+	"4.2.1" [label="Send Forged CAN Messages"]
+	"4.2_gate" -> "4.2.1"
+	"4.2.2" [label="Unlock the door"]
+	"4.2_gate" -> "4.2.2"
+	"4.2.3" [label="Prevent Re-locking"]
+	"4.2_gate" -> "4.2.3"
+	"4_gate" -> 4.2
+	4.3 [label="Compromise Hybrid ECU."]
+	"4.3_gate" [label=AND shape=rect]
+	4.3 -> "4.3_gate" [color=black]
+	"4.3.1" [label="Manipulate Motor Control Messages"]
+	"4.3_gate" -> "4.3.1"
+	"4.3.2" [label="Send Forged CAN Messages"]
+	"4.3_gate" -> "4.3.2"
+	"4_gate" -> 4.3
+	4.4 [label="Compromise ECUs on Autonomy CAN-Bus."]
+	"4.4_gate" [label=OR shape=ellipse]
+	4.4 -> "4.4_gate" [color=black]
+	"4.4.1" [label="Manipulate Radar ECU"]
+	"4.4_gate" -> "4.4.1"
+	"4.4.2" [label="Manipulate Forward-looking Camera ECU"]
+	"4.4_gate" -> "4.4.2"
+	"4_gate" -> 4.4
+	"0_gate" -> 4
+}

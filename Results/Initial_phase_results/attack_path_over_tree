@@ -1,0 +1,167 @@
+digraph {
+	0 [label="Remote Control"]
+	"0_gate" [label=AND shape=rect]
+	0 -> "0_gate" [color=black]
+	1 [label="Entry Points" color=red fillcolor=lightcoral style=filled]
+	"1_gate" [label=OR color=red fillcolor=lightcoral shape=ellipse style=filled]
+	1 -> "1_gate" [color=red]
+	1.1 [label="Cellular Network"]
+	"1.1_gate" [label=AND shape=rect]
+	1.1 -> "1.1_gate" [color=black]
+	"1.1.1" [label="Identify Vulnerabilities"]
+	"1.1_gate" -> "1.1.1"
+	"1.1.2" [label="Exploit Vulnerabilities"]
+	"1.1_gate" -> "1.1.2"
+	"1.1.3" [label="Access Shell"]
+	"1.1_gate" -> "1.1.3"
+	"1.1.4" [label="Obtain IP Address"]
+	"1.1.4_gate" [label=OR shape=ellipse]
+	"1.1.4" -> "1.1.4_gate" [color=black]
+	"1.1.4.1" [label="Random Selection"]
+	"1.1.4_gate" -> "1.1.4.1"
+	"1.1.4.2" [label="Use VIN or GPS"]
+	"1.1.4_gate" -> "1.1.4.2"
+	"1.1_gate" -> "1.1.4"
+	"1_gate" -> 1.1
+	1.2 [label="Wi-Fi Network" color=red fillcolor=lightcoral style=filled]
+	"1.2_gate" [label=AND color=red fillcolor=lightcoral shape=rect style=filled]
+	1.2 -> "1.2_gate" [color=red]
+	"1.2.1" [label="Identify Wi-Fi" color=red fillcolor=lightcoral style=filled]
+	"1.2_gate" -> "1.2.1" [color=red penwidth=2]
+	"1.2.2" [label="Gain Wi-Fi Access" color=red fillcolor=lightcoral style=filled]
+	"1.2.2_gate" [label=OR color=red fillcolor=lightcoral shape=ellipse style=filled]
+	"1.2.2" -> "1.2.2_gate" [color=red]
+	"1.2.2.1" [label="Crack Password" color=red fillcolor=lightcoral style=filled]
+	"1.2.2_gate" -> "1.2.2.1" [color=red penwidth=2]
+	"1.2.2.2" [label="Reverse Password"]
+	"1.2.2_gate" -> "1.2.2.2"
+	"1.2_gate" -> "1.2.2" [color=red penwidth=2]
+	"1.2.3" [label="Intercept Traffic" color=red fillcolor=lightcoral style=filled]
+	"1.2_gate" -> "1.2.3" [color=red penwidth=2]
+	"1.2.4" [label="Extract Data" color=red fillcolor=lightcoral style=filled]
+	"1.2.4_gate" [label=OR color=red fillcolor=lightcoral shape=ellipse style=filled]
+	"1.2.4" -> "1.2.4_gate" [color=red]
+	"1.2.4.1" [label="Identify IP" color=red fillcolor=lightcoral style=filled]
+	"1.2.4_gate" -> "1.2.4.1" [color=red penwidth=2]
+	"1.2.4.2" [label="Identify Protocols"]
+	"1.2.4_gate" -> "1.2.4.2"
+	"1.2.4.3" [label="Identify Ports"]
+	"1.2.4_gate" -> "1.2.4.3"
+	"1.2_gate" -> "1.2.4" [color=red penwidth=2]
+	"1_gate" -> 1.2 [color=red penwidth=2]
+	1.3 [label="Bluetooth Network"]
+	"1.3_gate" [label=AND shape=rect]
+	1.3 -> "1.3_gate" [color=black]
+	"1.3.1" [label="Identify Bluetooth"]
+	"1.3_gate" -> "1.3.1"
+	"1.3.2" [label="Exploit Bluetooth"]
+	"1.3_gate" -> "1.3.2"
+	"1.3.3" [label="Intercept Bluetooth"]
+	"1.3_gate" -> "1.3.3"
+	"1.3.4" [label="Extract Bluetooth Data"]
+	"1.3.4_gate" [label=AND shape=rect]
+	"1.3.4" -> "1.3.4_gate" [color=black]
+	"1.3.4.1" [label="Identify Bluetooth Protocols"]
+	"1.3.4_gate" -> "1.3.4.1"
+	"1.3.4.2" [label="Identify Bluetooth Ports"]
+	"1.3.4_gate" -> "1.3.4.2"
+	"1.3_gate" -> "1.3.4"
+	"1_gate" -> 1.3
+	"0_gate" -> 1 [color=red penwidth=2]
+	2 [label="Remote Access"]
+	"2_gate" [label=AND shape=rect]
+	2 -> "2_gate" [color=black]
+	2.1 [label="Exploit D-Bus"]
+	"2_gate" -> 2.1
+	2.2 [label="Access UConnect"]
+	"2_gate" -> 2.2
+	"0_gate" -> 2
+	3 [label="Control ECUs"]
+	"3_gate" [label=OR shape=ellipse]
+	3 -> "3_gate" [color=black]
+	3.1 [label="Non-CAN ECUs"]
+	"3.1_gate" [label=AND shape=rect]
+	3.1 -> "3.1_gate" [color=black]
+	"3.1.1" [label="Exploit OMAP"]
+	"3.1.1_gate" [label=AND shape=rect]
+	"3.1.1" -> "3.1.1_gate" [color=black]
+	"3.1.1.1" [label="Execute Code"]
+	"3.1.1_gate" -> "3.1.1.1"
+	"3.1.1.2" [label="Upload SSH Key"]
+	"3.1.1_gate" -> "3.1.1.2"
+	"3.1.1.3" [label="Start SSH"]
+	"3.1.1_gate" -> "3.1.1.3"
+	"3.1.1.4" [label="SSH to Vehicle"]
+	"3.1.1_gate" -> "3.1.1.4"
+	"3.1.1.5" [label="Control UConnect"]
+	"3.1.1.5_gate" [label=AND shape=rect]
+	"3.1.1.5" -> "3.1.1.5_gate" [color=black]
+	"3.1.1.5.1" [label="Control Radio"]
+	"3.1.1.5_gate" -> "3.1.1.5.1"
+	"3.1.1.5.2" [label="Control AC"]
+	"3.1.1.5_gate" -> "3.1.1.5.2"
+	"3.1.1.5.3" [label="Control Windshield Wipers"]
+	"3.1.1.5_gate" -> "3.1.1.5.3"
+	"3.1.1_gate" -> "3.1.1.5"
+	"3.1_gate" -> "3.1.1"
+	"3_gate" -> 3.1
+	3.2 [label="CAN ECUs"]
+	"3.2_gate" [label=AND shape=rect]
+	3.2 -> "3.2_gate" [color=black]
+	"3.2.1" [label="Flash V850"]
+	"3.2.1_gate" [label=AND shape=rect]
+	"3.2.1" -> "3.2.1_gate" [color=black]
+	"3.2.1.1" [label="Understand V850"]
+	"3.2.1.1_gate" [label=OR shape=ellipse]
+	"3.2.1.1" -> "3.2.1.1_gate" [color=black]
+	"3.2.1.1.1" [label="Application Node"]
+	"3.2.1.1_gate" -> "3.2.1.1.1"
+	"3.2.1.1.2" [label="Bootloader Node"]
+	"3.2.1.1_gate" -> "3.2.1.1.2"
+	"3.2.1.1.3" [label="Bootloader Updater"]
+	"3.2.1.1_gate" -> "3.2.1.1.3"
+	"3.2.1_gate" -> "3.2.1.1"
+	"3.2_gate" -> "3.2.1"
+	"3.2.2" [label="Update Firmware"]
+	"3.2.2_gate" [label=AND shape=rect]
+	"3.2.2" -> "3.2.2_gate" [color=black]
+	"3.2.2.1" [label="Obtain Firmware"]
+	"3.2.2_gate" -> "3.2.2.1"
+	"3.2.2.2" [label="Reverse Engineer V850"]
+	"3.2.2.2_gate" [label=AND shape=rect]
+	"3.2.2.2" -> "3.2.2.2_gate" [color=black]
+	"3.2.2.2.1" [label="Firmware Extraction"]
+	"3.2.2.2_gate" -> "3.2.2.2.1"
+	"3.2.2.2.2" [label="Disassembly & Decompilation"]
+	"3.2.2.2.2_gate" [label=AND shape=rect]
+	"3.2.2.2.2" -> "3.2.2.2.2_gate" [color=black]
+	"3.2.2.2.2.1" [label="Disassemble Firmware"]
+	"3.2.2.2.2_gate" -> "3.2.2.2.2.1"
+	"3.2.2.2.2.2" [label="Decompile Code"]
+	"3.2.2.2.2_gate" -> "3.2.2.2.2.2"
+	"3.2.2.2_gate" -> "3.2.2.2.2"
+	"3.2.2_gate" -> "3.2.2.2"
+	"3.2.2.3" [label="Find CAN Code"]
+	"3.2.2_gate" -> "3.2.2.3"
+	"3.2.2.4" [label="Modify Firmware"]
+	"3.2.2_gate" -> "3.2.2.4"
+	"3.2_gate" -> "3.2.2"
+	"3.2.3" [label="Flash V850 via OMAP"]
+	"3.2_gate" -> "3.2.3"
+	"3.2.4" [label="Cyber-Physical Actions"]
+	"3.2.4_gate" [label=AND shape=rect]
+	"3.2.4" -> "3.2.4_gate" [color=black]
+	"3.2.4.1" [label="Utilize Firmware"]
+	"3.2.4_gate" -> "3.2.4.1"
+	"3.2.4.2" [label="Send CAN Messages"]
+	"3.2.4.2_gate" [label=OR shape=ellipse]
+	"3.2.4.2" -> "3.2.4.2_gate" [color=black]
+	"3.2.4.2.1" [label=Steering]
+	"3.2.4.2_gate" -> "3.2.4.2.1"
+	"3.2.4.2.2" [label=Brakes]
+	"3.2.4.2_gate" -> "3.2.4.2.2"
+	"3.2.4_gate" -> "3.2.4.2"
+	"3.2_gate" -> "3.2.4"
+	"3_gate" -> 3.2
+	"0_gate" -> 3
+}

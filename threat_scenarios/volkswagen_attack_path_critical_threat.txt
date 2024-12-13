@@ -1,0 +1,11 @@
+0,Perform DoS Attack and Spoof Volume Setting
+1,Gain Access to Vehicle's Network
+1.1,Physical Access to Vehicle Network
+1.2,Exploit a vulnerability to gain remote access to the vehicle's network
+2,Compromise the ICAS 3 IVI ECU to manipulate vehicle infotainment system functionality
+2.1,Send unauthorized REST API calls to the ICAS 3 IVI ECU
+2.1.1,Crash the ICAS 3 IVI ECU by sending crafted requests that overload the system
+2.1.2,Send REST API calls to spoof volume setting commands, turning audio volume to maximum
+2.2,Bypass or exploit access control vulnerabilities in the ICAS 3 IVI ECU to execute unauthorized actions.
+2.2.1,Exploit the CWE-284 access control vulnerability to manipulate ICAS 3 IVI ECU
+2.2.2,Manipulate ICAS 3 IVI ECU

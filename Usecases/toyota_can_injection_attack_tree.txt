@@ -1,0 +1,433 @@
+ID: 0
+Node type: Root
+Name: Compromise CAN-Bus.
+Description: CAN Injection attack to gain physical access to Toyota RAV4 car
+Gate: AND
+Parent: None
+
+ID: 1
+Node type: Intermediate
+Name: Physical Access
+Description: Gain Physical Access to Vehicle.
+Gate: AND
+Parent: 0
+
+ID: 1.1
+Node type: Leaf
+Name: Bypass Physical Security
+Description: Bypass physical security (e.g., break into the vehicle).
+Parent: 1
+AV: Physical
+AC: High
+PR: High
+UI: Required 
+
+ID: 1.2
+Node type: Leaf
+Name: Access Headlight
+Description: Access the Headlight Connector Behind the Bumper.
+Parent: 1
+AV: Physical
+AC: High
+PR: High
+UI: Required 
+
+ID: 1.3
+Node type: Leaf
+Name: Manipulate the Wiring
+Description: Manipulate the wiring without triggering an alarm.
+Parent: 1
+AV: Physical
+AC: High
+PR: High
+UI: Required 
+
+
+ID: 2
+Node type: Intermediate
+Name: Deploy CAN Injector
+Description: Deploy CAN Injector.
+Gate: AND
+Parent: 0
+
+ID: 2.1
+Node type: Intermediate
+Name: Connect the CAN Injector.
+Description: Connect the CAN Injector to the vehicle's CAN bus.
+Gate: OR
+Parent: 2
+
+
+ID: 2.1.1
+Node type: Leaf
+Name: Headlight Wiring
+Description: Connect the CAN Injector to CAN-Bus through Headlight Wiring.
+Parent: 2.1
+AV: Physical
+AC: High
+PR: High
+UI: Required 
+
+ID: 2.1.2
+Node type: Leaf
+Name: OBD-II Port
+Description: Connect to the OBD-II port to access the control CAN bus.
+Parent: 2.1
+AV: Physical
+AC: High
+PR: High
+UI: Required 
+
+ID: 2.1.3
+Node type: Leaf
+Name: Other Vulnerable External Wiring
+Description: Access other vulnerable external wiring linked to the control CAN bus.
+Parent: 2.1
+AV: Physical
+AC: High
+PR: High
+UI: Required
+
+ID: 2.2
+Node type: Intermediate
+Name: send CAN Frames to Control CAN-Bus.
+Description: Use the CAN injector to send CAN frames onto the control CAN bus.
+Gate: AND
+Parent: 2
+
+ID: 2.2.1
+Node type: Leaf
+Name: Send CAN Messages
+Description: Send CAN messages onto the bus.
+Parent: 2.2
+AV: Adjacent_Network
+AC: High
+PR: High
+UI: Required
+
+ID: 2.2.2
+Node type: Leaf
+Name: Match CAN Traffic
+Description: Synchronize timing to match valid CAN traffic.
+Parent: 2.2
+AV: Adjacent_Network
+AC: High
+PR: High
+UI: Required
+
+ID: 2.2.3
+Node type: Leaf
+Name: Avoid Triggering Anomalies
+Description: Bypass detection mechanisms, if present, to avoid triggering anomalies.
+Parent: 2.2
+AV: Adjacent_Network
+AC: High
+PR: High
+UI: Required
+
+ID: 2.3
+Node type: Intermediate
+Name: Identify Critical ECUs on the CAN-Bus.
+Description: Identify Critical ECUs on the CAN-Bus.
+Gate: OR
+Parent: 2
+
+ID: 2.3.1
+Node type: Leaf
+Name: Smart Key ECU
+Description: Identify smart key ECU.
+Parent: 2.3
+AV: Adjacent_Network
+AC: High
+PR: High
+UI: Required
+
+ID: 2.3.2
+Node type: Leaf
+Name: Door Control ECU
+Description: Identify door control ECU.
+Parent: 2.3
+AV: Adjacent_Network
+AC: High
+PR: High
+UI: Required
+
+ID: 2.3.3
+Node type: Leaf
+Name: Telematics ECU
+Description: Identify Telematics ECU.
+Parent: 2.3
+AV: Adjacent_Network
+AC: High
+PR: High
+UI: Required
+
+ID: 2.4
+Node type: Intermediate
+Name: Impersonate the Target ECU.
+Description: Impersonate the target ECU.
+Gate: OR
+Parent: 2
+
+ID: 2.4.1
+Node type: Intermediate
+Name: Impersonate the Smart key
+Description: Impersonate the smart key.
+Gate: AND
+Parent: 2.4
+
+ID: 2.4.1.1
+Node type: Leaf
+Name: Reverse-engineering
+Description: Reverse-engineer key validation protocol.
+Parent: 2.4.1
+AV: Adjacent_Network
+AC: High
+PR: High
+UI: Required
+
+ID: 2.4.1.2
+Node type: Leaf
+Name: Send Validation Messages
+Description: Send Validation Messages.
+Parent: 2.4.1
+AV: Adjacent_Network
+AC: High
+PR: High
+UI: Required
+
+ID: 2.4.1.3
+Node type: Leaf
+Name: Avoid Triggering Alarms
+Description: Avoid triggering error responses from ECUs when sending validation messages.
+Parent: 2.4.1
+AV: Adjacent_Network
+AC: High
+PR: High
+UI: Required
+
+ID: 2.4.2
+Node type: Leaf
+Name: Impersonate the Parking brake
+Description: Impersonate the Parking brake.
+Parent: 2.4
+AV: Adjacent_Network
+AC: High
+PR: High
+UI: Required
+
+ID: 3
+Node type: Intermediate
+Name: Propagate to Other CAN-Buses
+Description: Exploit CAN communication to propagate messages to other CAN-buses.
+Gate: AND
+Parent: 0
+
+ID: 3.1
+Node type: Intermediate
+Name:  Send Forged CAN Messages
+Description: Send forged CAN messages across the control CAN bus.
+Gate: OR
+Parent: 3
+
+ID: 3.1.1
+Node type: Leaf
+Name: Send Key Validation
+Description: Send key validation messages over the control CAN bus.
+Parent: 3.1
+AV: Adjacent_Network
+AC: High
+PR: High
+UI: Required
+
+ID: 3.1.2
+Node type: Leaf
+Name: Forge Control Messages
+Description: Forge other essential control messages (e.g., door lock/unlock, telematics).
+Parent: 3.1
+AV: Adjacent_Network
+AC: High
+PR: High
+UI: Required
+
+ID: 3.2
+Node type: Intermediate
+Name: Exploit Lack of Security
+Description: Exploit the lack of internal communication security to propagate messages.
+Gate: AND
+Parent: 3
+
+ID: 3.2.1
+Node type: Leaf
+Name: Copy CAN Messages from Control to Powertrain CAN-Bus
+Description: Utilize forwarding mechanisms to copy CAN frames from the control CAN bus to the powertrain CAN bus.
+Parent: 3.2
+AV: Adjacent_Network
+AC: High
+PR: High
+UI: Required
+
+ID: 3.2.2
+Node type: Leaf
+Name: Avoid Detection
+Description: Avoid detection by ECUs monitoring communication on the buses.
+Parent: 3.2
+AV: Adjacent_Network
+AC: High
+PR: High
+UI: Required
+
+ID: 3.2.3
+Node type: Leaf
+Name: Exploit vulnerabilities
+Description: Exploit any vulnerabilities in the ECU firmware to ensure messages are accepted.
+Parent: 3.2
+AV: Adjacent_Network
+AC: High
+PR: High
+UI: Required
+
+ID: 4
+Node type: Intermediate
+Name: Compromise Different CAN-Buses 
+Description: Compromise the ECUs on different CAN buses .
+Gate: OR
+Parent: 0
+
+ID: 4.1
+Node type: Intermediate
+Name: Compromise Engine ECU
+Description: Compromise the engine ECU on the powertrain CAN bus.
+Gate: AND
+Parent: 4
+
+ID: 4.1.1
+Node type: Leaf
+Name: Send Crafted CAN Messages
+Description: Send crafted CAN messages to deactivate the immobilizer.
+Parent: 4.1
+AV: Adjacent_Network
+AC: High
+PR: High
+UI: Required
+
+ID: 4.1.2
+Node type: Leaf
+Name: Disable the Immobilizer
+Description: Exploit vulnerabilities in the ECU to disable immobilizer security features.
+Parent: 4.1
+AV: Adjacent_Network
+AC: High
+PR: High
+UI: Required
+
+ID: 4.1.3
+Node type: Leaf
+Name: Bypass Security Controls
+Description: Bypass security controls in the powertrain CAN to prevent interference.
+Parent: 4.1
+AV: Adjacent_Network
+AC: High
+PR: High
+UI: Required
+
+ID: 4.2
+Node type: Intermediate
+Name: Compromise Door ECU.
+Description: Compromise the door ECU on the control CAN bus.
+Gate: AND
+Parent: 4
+
+ID: 4.2.1
+Node type: Leaf
+Name: Send Forged CAN Messages
+Description: Send forged CAN messages to unlock the doors remotely.
+Parent: 4.2
+AV: Adjacent_Network
+AC: High
+PR: High
+UI: Required
+
+ID: 4.2.2
+Node type: Leaf
+Name: Unlock the door
+Description: Exploit vulnerabilities in the ECU to unlock the door.
+Parent: 4.2
+AV: Adjacent_Network
+AC: High
+PR: High
+UI: Required
+
+ID: 4.2.3
+Node type: Leaf
+Name: Prevent Re-locking
+Description: Maintain control over the door locking system to prevent re-locking.
+Parent: 4.2
+AV: Adjacent_Network
+AC: High
+PR: High
+UI: Required
+
+ID: 4.3
+Node type: Intermediate
+Name: Compromise Hybrid ECU.
+Description: Compromise the hybrid battery/motor control on the powertrain CAN bus.
+Gate: AND
+Parent: 4
+
+ID: 4.3.1
+Node type: Leaf
+Name: Manipulate Motor Control Messages
+Description: Manipulate battery/motor control messages to disable energy-saving features.
+Parent: 4.3
+AV: Adjacent_Network
+AC: High
+PR: High
+UI: Required
+
+ID: 4.3.2
+Node type: Leaf
+Name: Send Forged CAN Messages
+Description: Send CAN messages to alter the behavior of the hybrid system (e.g., affecting speed or power distribution).
+Parent: 4.3
+AV: Adjacent_Network
+AC: High
+PR: High
+UI: Required
+
+ID: 4.4
+Node type: Intermediate
+Name: Compromise ECUs on Autonomy CAN-Bus.
+Description: Compromise ECUs on the autonomy CAN bus .
+Gate: OR
+Parent: 4
+
+ID: 4.4.1
+Node type: Leaf
+Name: Manipulate Radar ECU
+Description: Send forged messages to radar ECU to disable or manipulate sensor input.
+Parent: 4.4
+AV: Adjacent_Network
+AC: High
+PR: High
+UI: Required
+
+ID: 4.4.2
+Node type: Leaf
+Name: Manipulate Forward-looking Camera ECU
+Description: Send manipulated commands to the forward-looking camera ECU.
+Parent: 4.4
+AV: Adjacent_Network
+AC: High
+PR: High
+UI: Required
+
+ID: 4.4.3
+Node type: Leaf
+Name: Manipulate Self-Parking ECU
+Description: Compromise the self-parking ECU to interfere with autonomous parking functionality.
+Parent: 4.4
+AV: Adjacent_Network
+AC: High
+PR: High
+UI: Required

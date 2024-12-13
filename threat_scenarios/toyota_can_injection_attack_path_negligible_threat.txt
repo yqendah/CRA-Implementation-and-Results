@@ -1,0 +1,6 @@
+0,CAN Injection attack to gain physical access to Toyota RAV4 car.
+1,Gain physical access to the vehicle.
+1.1,Bypass physical security (e.g., break into the vehicle).
+1.2,Access the Headlight Connector Behind the Bumper.
+1.3,Manipulate the wiring without triggering an alarm.
+

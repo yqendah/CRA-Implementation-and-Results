@@ -1,0 +1,6 @@
+Attack Path: Exploit Wi-Fi Network and Identify Vehicle IP address.
+1,Exploit Remote Entry Points and Compromise Head Unit.
+1.2,Compromise Wi-Fi Network.
+1.2.1,Identify Wi-Fi Network.
+1.2.2,Gain Wi-Fi Access.
+1.2.2.1,Crack Wi-Fi Password.

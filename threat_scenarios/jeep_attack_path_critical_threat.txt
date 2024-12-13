@@ -1,0 +1,30 @@
+Attack Path: Exploit Cellular Network and Control Car Steering
+1,Exploit Remote Entry Points and Compromise Head Unit.
+1.1,Compromise Cellular Network.
+1.1.1,Identify Common Vulnerabilities in Cellular Network.
+1.1.2,Exploit Vulnerabilities.
+1.1.3,Gain Access to Shell.
+1.1.4,Obtain IP Address of the Vehicle.
+1.1.4.2,Use VIN or GPS to Scan IP Ranges.
+2,Gain Remote Access to the Head Unit.
+2.1,Exploit D-Bus Service.
+2.2,Access the UConnect System.
+3,Control ECUs to Manipulate Non-CAN and CAN Attributes.
+3.2,Control ECUs to Manipulate CAN Physical Attributes.
+3.2.2,Update V850 Firmware.
+3.2.2.1,Obtain V850 Firmware Binary File.
+3.2.2.2,Reverse Engineer V850 Firmware.
+3.2.2.2.1,Firmware Extraction.
+3.2.2.2.2,Disassembly and Decompilation.
+3.2.2.2.2.1,Disassemble Firmware Using IDA Pro.
+3.2.2.2.2.2,Decompile Code to Higher-Level Language Using Ghidra or IDA Pro.
+3.2.2.2.3,Dynamic Analysis.
+3.2.2.2.3.1,Set Breakpoints and Analyze Firmware Behavior Using IDA Python.
+3.2.2.3,Find Code for Sending and Receiving CAN Messages.
+3.2.2.4,Modify the Firmware to Send Manipulated CAN Data.
+3.2.3,Flash V850 with Modified Firmware Using OMAP Chip from UConnect System.
+3.2.4,Perform Cyber-Physical Actions.
+3.2.4.1,Utilize Modified Firmware to Send CAN Messages.
+3.2.4.2,Send CAN Messages from OMAP to V850 Chip Using SPI to Perform Physical Actions.
+3.2.4.2.1,Control Steering.
+0,Gain Remote Control of Jeep Cherokee.

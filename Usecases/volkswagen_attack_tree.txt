@@ -1,0 +1,94 @@
+ID: 0
+Node type: Root
+Name: Perform DoS Attack and Spoof Volume Setting
+Description: Exploit the vulnerability in ICAS 3 IVI ECU to perform Denial of Service and spoof volume setting commands in Volkswagen ID.3.
+Gate: AND
+Parent: None
+
+ID: 1
+Node type: Intermediate
+Name: Gain Access to Vehicle's Network
+Description: Gain unauthorized access to the vehicle's internal network.
+Gate: OR
+Parent: 0
+
+ID: 1.1
+Node type: Leaf
+Name: Physical Access to Vehicle Network
+Description: Gain physical access to the vehicle to connect to its internal network.
+Parent: 1
+AV: Physical
+AC: High
+PR: Low
+UI: None
+
+ID: 1.2
+Node type: Leaf
+Name: Exploit Remote Access
+Description: Exploit a vulnerability to gain remote access to the vehicle's network.
+Parent: 1
+AV: Network
+AC: Low
+PR: Low
+UI: None
+
+ID: 2
+Node type: Intermediate
+Name: Compromise ICAS 3 IVI ECU
+Description: Compromise the ICAS 3 IVI ECU to manipulate vehicle infotainment system functionality.
+Gate: AND
+Parent: 0
+
+ID: 2.1
+Node type: Intermediate
+Name: Send Malicious API Calls
+Description: Send unauthorized REST API calls to the ICAS 3 IVI ECU.
+Gate: OR
+Parent: 2
+
+ID: 2.1.1
+Node type: Leaf
+Name: Denial of Service (DoS)
+Description: Crash the ICAS 3 IVI ECU by sending crafted requests that overload the system.
+Parent: 2.1
+AV: Network
+AC: Low
+PR: Low
+UI: None
+
+ID: 2.1.2
+Node type: Leaf
+Name: Spoof Volume Commands
+Description: Send REST API calls to spoof volume setting commands, turning audio volume to maximum.
+Parent: 2.1
+AV: Network
+AC: Low
+PR: Low
+UI: None
+
+ID: 2.2
+Node type: Intermediate
+Name: Bypass Access Control
+Description: Bypass or exploit access control vulnerabilities in the ICAS 3 IVI ECU to execute unauthorized actions.
+Gate: OR
+Parent: 2
+
+ID: 2.2.1
+Node type: Leaf
+Name: Exploit CWE-284 Vulnerability
+Description: Exploit the CWE-284 access control vulnerability to manipulate ICAS 3 IVI ECU.
+Parent: 2.2
+AV: Network
+AC: Low
+PR: Low
+UI: None
+
+ID: 2.2.2
+Node type: Leaf
+Name: Manipulate ICAS 3 IVI ECU
+Description: Manipulate ICAS 3 IVI ECU.
+Parent: 2.2
+AV: Network
+AC: Low
+PR: Low
+UI: None
